@@ -62,6 +62,11 @@ set undofile
 set undodir     =$HOME/.config/nvim/files/undo/
 set viminfo     ='100,n$HOME/.config/nvim/files/info/viminfo
 
+autocmd FileType dockerfile set noexpandtab
+" shell/config/systemd settings
+autocmd FileType fstab,systemd set noexpandtab
+autocmd FileType gitconfig,sh,toml set noexpandtab
+
 call plug#begin()
   Plug 'preservim/nerdtree'
   Plug 'junegunn/fzf.vim'
@@ -71,11 +76,15 @@ call plug#begin()
   Plug 'dense-analysis/ale'
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
   Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'tpope/vim-fugitive'
+  Plug 'rbong/vim-flog'
 call plug#end()
 
 " Start NERDTree and put the cursor back in the other window.
-autocmd VimEnter * NERDTree | wincmd p
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * NERDTree | if argc() > 0 || exists("s:std_in") | wincmd p | endif
 nnoremap <silent> <C-f> :Files<CR>
+nnoremap <silent> <C-s> :Flogsplit<CR>
 
 lua << END
 require('lualine').setup {
