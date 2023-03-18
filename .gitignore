@@ -1,0 +1,9 @@
+nvim/files/backup/*
+nvim/files/swap/*
+nvim/files/info/*
+nvim/files/undo/*
+
+!nvim/files/backup/.gitkeep
+!nvim/files/swap/.gitkeep
+!nvim/files/info/.gitkeep
+!nvim/files/undo/.gitkeep
