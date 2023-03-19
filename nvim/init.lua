@@ -69,10 +69,14 @@ require('lazy').setup({
   -- Git related plugins
   'tpope/vim-fugitive',
   'rbong/vim-flog',
+
+  -- external plugins i use
   'tpope/vim-rhubarb',
   'preservim/nerdtree',
   'petertriho/nvim-scrollbar',
   'mhartington/formatter.nvim',
+  'romgrk/barbar.nvim',
+
   -- Detect tabstop and shiftwidth automatically
   'tpope/vim-sleuth',
 
@@ -297,6 +301,8 @@ vim.keymap.set('n', '<leader>sd', require('telescope.builtin').diagnostics, { de
 vim.api.nvim_set_keymap('n', '<leader>f', ':Format<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<C-f>', ':Flogsplit<CR>', { noremap = true })
 vim.api.nvim_set_keymap('n', '<leader>n', ':NERDTreeFind<CR>', { noremap = true })
+vim.api.nvim_set_keymap('n', '<C-t>', '<Cmd>BufferNext<CR>', { noremap = true })
+
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 require('nvim-treesitter.configs').setup {
@@ -436,7 +442,6 @@ local servers = {
 
 -- Setup formatter 
 require("formatter").setup()
-
 -- Setup scrollbar
 require("scrollbar").setup()
 
